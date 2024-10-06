@@ -55,3 +55,22 @@ int main(){
       cout << "============================================================" << endl;
       cout << "Masukkan nilai " << satuan1 << ": ";
       cin  >> jarak;
+
+if(satuan1 == "cm" && satuan2 == "m"){
+            cout << jarak << satuan1 << " = " << centiTOmeter(jarak) << satuan2 << endl;
+        }else if(satuan1 == "cm" && satuan2 == "km"){
+            cout << jarak << satuan1 << " = " << centiTOkilo(jarak) << satuan2 << endl;
+        }else if(satuan1 == "m" && satuan2 == "cm"){
+            cout << jarak << satuan1 << " = " << meterTOcenti(jarak) << satuan2 << endl;
+        }else if(satuan1 == "m" && satuan2 == "km"){
+            cout << jarak << satuan1 << " = " << meterTOkilo(jarak) << satuan2 << endl;
+        }else if(satuan1 == "km" && satuan2 == "cm"){
+            cout << jarak << satuan1 << " = " << kiloTOcenti(jarak) << satuan2 << endl;
+        }else if(satuan1 == "km" && satuan2 == "m"){
+            cout << jarak << satuan1 << " = " << kiloTOmeter(jarak) << satuan2 << endl;
+        }else{
+            cout << "============================================================" << endl;
+            cout << "Satuan " << satuan1 << " & " << satuan2 << " tidak valid/tersedia." << endl;
+            exit(1);
+        }
+
