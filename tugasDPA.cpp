@@ -73,5 +73,32 @@ if(satuan1 == "cm" && satuan2 == "m"){
             cout << "Satuan " << satuan1 << " & " << satuan2 << " tidak valid/tersedia." << endl;
             exit(1);
         }
+} else if (pilihan == 'M'){
+    cout << "Anda telah konverter mata uang." << endl;
+    cout << "============================================================" << endl;
+    cout << "Masukkan mata uang yang ingin anda konversi [IDR][USD]: ";
+    cin >> uang1;
+    if (uang1 == "IDR"){
+      uang2 == "USD";
+      cout << "Anda memilih untuk mengkonversi IDR ke USD." << endl;
+    } else if (uang1 == "USD"){
+      uang2 == "IDR";
+      cout << "Anda memilih untuk mengkonversi USD ke IDR." << endl;
+    }
+    cout << "============================================================" << endl;
+    cout << "Masukkan nilai " << uang1 << ": ";
+    cin >> duit;
+
+    if (uang1 == "IDR"){
+      cout << "Rp " << duit << " = " << "$" << rpTOusd(duit) << endl;
+    } else if (uang1 == "USD"){
+      cout << "$" << duit << " = " << "Rp " << usdTOrp(duit) << endl;
+    } else {
+      cout << "Mata uang yang anda masukkan tidak valid/tersedia." << endl; 
+      exit(1);
+    }   
+  }
+ return 0;
+}
 
 
