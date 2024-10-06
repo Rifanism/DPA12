@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
@@ -26,35 +27,62 @@ double kiloTOmeter(double jarak){
 }
 
 //duit//
-long long rpTOusd(long long duit){
+double rpTOusd(double duit){
   return duit / 15670;
 }
-long long usdTOrp(long long duit){
+double usdTOrp(double duit){
   return duit * 15670;
+}
+
+double rpTOwon(double duit){
+    return duit / 12;
+}
+double wonTOrp(double duit){
+    return duit * 12;
+}
+
+double rpTOjpy(double duit){
+    return duit / 105;
+}
+double jpyTOrp(double duit){
+    return duit * 105;
 }
 
 int main(){
   string uang1, uang2, satuan1, satuan2;
   char pilihan;
   double jarak;
-  long long duit;
+  double duit;
+  long long duit2;
 
   cout << endl;
   cout << "Selamat datang di Ambatool Converter!" << endl;
   cout << "============================================================" << endl << endl;
   cout << "Apa yang ingin anda konversi?\n" << "Jarak [J]\n" << "Mata Uang [M]" << endl;
+  cout << "Masukkan pilihan: ";
   cin  >> pilihan;
 
-  if(pilihan == 'J'){
-      cout << "Anda memilih konverter jarak." << endl;
+  if(pilihan == 'J' || pilihan == 'j'){
+      cout << endl << "[Anda memilih konverter jarak]" << endl;
       cout << "============================================================" << endl;
-      cout << "Masukkan satuan jarak yang ingin anda konversi [cm][m][km]: " << endl;
+      cout << "Masukkan satuan jarak yang ingin anda konversi [cm][m][km]: ";
       cin  >> satuan1;
-      cout << "Konversi " << satuan1 << " ke [cm][m][km]: " << endl;
+      transform(satuan1.begin(), satuan1.end(), satuan1.begin(), ::tolower);
+      if(satuan1 == "cm"){
+          cout << "Konversi " << satuan1 << " ke [m][km]: ";
+      }else if(satuan1 == "m"){
+          cout << "Konversi " << satuan1 << " ke [cm][km]: ";
+      }else if(satuan1 == "km"){
+          cout << "Konversi " << satuan1 << " ke [cm][m]: ";
+      }else{
+          cout << "Satuan " << satuan1 << " tidak valid/tersedia.";
+          exit(1);
+      }
       cin  >> satuan2;
-      cout << "============================================================" << endl;
+      transform(satuan2.begin(), satuan2.end(), satuan2.begin(), ::tolower);
       cout << "Masukkan nilai " << satuan1 << ": ";
       cin  >> jarak;
+      cout << "============================================================" << endl;
 
       if(satuan1 == "cm" && satuan2 == "m"){
           cout << jarak << satuan1 << " = " << centiTOmeter(jarak) << satuan2 << endl;
@@ -69,30 +97,46 @@ int main(){
       }else if(satuan1 == "km" && satuan2 == "m"){
           cout << jarak << satuan1 << " = " << kiloTOmeter(jarak) << satuan2 << endl;
       }else{
-          cout << "============================================================" << endl;
           cout << "Satuan " << satuan1 << " & " << satuan2 << " tidak valid/tersedia." << endl;
           exit(1);
       }
-  }else if (pilihan == 'M'){
-      cout << "Anda memilih konverter mata uang." << endl;
+  }else if (pilihan == 'M' || pilihan == 'm'){
+      cout << endl << "[Anda memilih konverter mata uang]" << endl;
       cout << "============================================================" << endl;
-      cout << "Masukkan mata uang yang ingin anda konversi [IDR][USD]: ";
+      cout << "Masukkan mata uang yang ingin anda konversi [IDR][USD][KRW][JPY]: ";
       cin >> uang1;
+      transform(uang1.begin(), uang1.end(), uang1.begin(), ::toupper);
       if(uang1 == "IDR"){
-        uang2 == "USD";
-        cout << "Anda memilih untuk mengkonversi IDR ke USD." << endl;
-      }else if (uang1 == "USD"){
-        uang2 == "IDR";
-        cout << "Anda memilih untuk mengkonversi USD ke IDR." << endl;
+          cout << "Konversi " << uang1 << " ke [USD][KRW][JPY]: ";
+          cin >> uang2;
+          transform(uang2.begin(), uang2.end(), uang2.begin(), ::toupper);
+      }else if(uang1 == "USD"){
+          uang2 = "IDR";
+          cout << "Mengkonversi " << uang1 << " ke IDR" << endl;
+      }else if(uang1 == "KRW"){
+          uang2 = "IDR";
+          cout << "Mengkonversi " << uang1 << " ke IDR" << endl;
+      }else if(uang1 == "JPY"){
+          uang2 = "IDR";
+          cout << "Mengkonversi " << uang1 << " ke IDR" << endl;
       }
-      cout << "============================================================" << endl;
       cout << "Masukkan nilai " << uang1 << ": ";
       cin >> duit;
+      duit2 = duit;
+      cout << "============================================================" << endl;
 
-      if(uang1 == "IDR"){
-        cout << "Rp " << duit << " = " << "$" << rpTOusd(duit) << endl;
-      }else if(uang1 == "USD"){
-        cout << "$" << duit << " = " << "Rp " << usdTOrp(duit) << endl;
+      if(uang1 == "IDR" && uang2 == "USD"){
+          cout << "Rp. " << duit2 << " = " << "$" << rpTOusd(duit) << endl;
+      }else if(uang1 == "USD" && uang2 == "IDR"){
+          cout << "$" << duit2 << " = " << "Rp. " << usdTOrp(duit) << endl;
+      }else if(uang1 == "IDR" && uang2 == "KRW"){
+          cout << "Rp. " << duit2 << " = " << rpTOwon(duit) << " won" << endl;
+      }else if(uang1 == "KRW" && uang2 == "IDR"){
+          cout << duit2 << " won = " << "Rp. " << wonTOrp(duit) << endl;
+      }else if(uang1 == "IDR" && uang2 == "JPY"){
+          cout << "Rp. " << duit2 << " = " << "¥ " << rpTOjpy(duit) << endl;
+      }else if(uang1 == "JPY" && uang2 == "IDR"){
+          cout << "¥ " << duit2 << " = " << "Rp. " << jpyTOrp(duit) << endl;
       }else{
         cout << "Mata uang yang anda masukkan tidak valid/tersedia." << endl; 
         exit(1);
@@ -100,5 +144,3 @@ int main(){
   }
  return 0;
 }
-
-
