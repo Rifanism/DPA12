@@ -56,47 +56,47 @@ int main(){
       cout << "Masukkan nilai " << satuan1 << ": ";
       cin  >> jarak;
 
-if(satuan1 == "cm" && satuan2 == "m"){
-            cout << jarak << satuan1 << " = " << centiTOmeter(jarak) << satuan2 << endl;
-        }else if(satuan1 == "cm" && satuan2 == "km"){
-            cout << jarak << satuan1 << " = " << centiTOkilo(jarak) << satuan2 << endl;
-        }else if(satuan1 == "m" && satuan2 == "cm"){
-            cout << jarak << satuan1 << " = " << meterTOcenti(jarak) << satuan2 << endl;
-        }else if(satuan1 == "m" && satuan2 == "km"){
-            cout << jarak << satuan1 << " = " << meterTOkilo(jarak) << satuan2 << endl;
-        }else if(satuan1 == "km" && satuan2 == "cm"){
-            cout << jarak << satuan1 << " = " << kiloTOcenti(jarak) << satuan2 << endl;
-        }else if(satuan1 == "km" && satuan2 == "m"){
-            cout << jarak << satuan1 << " = " << kiloTOmeter(jarak) << satuan2 << endl;
-        }else{
-            cout << "============================================================" << endl;
-            cout << "Satuan " << satuan1 << " & " << satuan2 << " tidak valid/tersedia." << endl;
-            exit(1);
-        }
-} else if (pilihan == 'M'){
-    cout << "Anda telah konverter mata uang." << endl;
-    cout << "============================================================" << endl;
-    cout << "Masukkan mata uang yang ingin anda konversi [IDR][USD]: ";
-    cin >> uang1;
-    if (uang1 == "IDR"){
-      uang2 == "USD";
-      cout << "Anda memilih untuk mengkonversi IDR ke USD." << endl;
-    } else if (uang1 == "USD"){
-      uang2 == "IDR";
-      cout << "Anda memilih untuk mengkonversi USD ke IDR." << endl;
-    }
-    cout << "============================================================" << endl;
-    cout << "Masukkan nilai " << uang1 << ": ";
-    cin >> duit;
+      if(satuan1 == "cm" && satuan2 == "m"){
+          cout << jarak << satuan1 << " = " << centiTOmeter(jarak) << satuan2 << endl;
+      }else if(satuan1 == "cm" && satuan2 == "km"){
+          cout << jarak << satuan1 << " = " << centiTOkilo(jarak) << satuan2 << endl;
+      }else if(satuan1 == "m" && satuan2 == "cm"){
+          cout << jarak << satuan1 << " = " << meterTOcenti(jarak) << satuan2 << endl;
+      }else if(satuan1 == "m" && satuan2 == "km"){
+          cout << jarak << satuan1 << " = " << meterTOkilo(jarak) << satuan2 << endl;
+      }else if(satuan1 == "km" && satuan2 == "cm"){
+          cout << jarak << satuan1 << " = " << kiloTOcenti(jarak) << satuan2 << endl;
+      }else if(satuan1 == "km" && satuan2 == "m"){
+          cout << jarak << satuan1 << " = " << kiloTOmeter(jarak) << satuan2 << endl;
+      }else{
+          cout << "============================================================" << endl;
+          cout << "Satuan " << satuan1 << " & " << satuan2 << " tidak valid/tersedia." << endl;
+          exit(1);
+      }
+  }else if (pilihan == 'M'){
+      cout << "Anda memilih konverter mata uang." << endl;
+      cout << "============================================================" << endl;
+      cout << "Masukkan mata uang yang ingin anda konversi [IDR][USD]: ";
+      cin >> uang1;
+      if(uang1 == "IDR"){
+        uang2 == "USD";
+        cout << "Anda memilih untuk mengkonversi IDR ke USD." << endl;
+      }else if (uang1 == "USD"){
+        uang2 == "IDR";
+        cout << "Anda memilih untuk mengkonversi USD ke IDR." << endl;
+      }
+      cout << "============================================================" << endl;
+      cout << "Masukkan nilai " << uang1 << ": ";
+      cin >> duit;
 
-    if (uang1 == "IDR"){
-      cout << "Rp " << duit << " = " << "$" << rpTOusd(duit) << endl;
-    } else if (uang1 == "USD"){
-      cout << "$" << duit << " = " << "Rp " << usdTOrp(duit) << endl;
-    } else {
-      cout << "Mata uang yang anda masukkan tidak valid/tersedia." << endl; 
-      exit(1);
-    }   
+      if(uang1 == "IDR"){
+        cout << "Rp " << duit << " = " << "$" << rpTOusd(duit) << endl;
+      }else if(uang1 == "USD"){
+        cout << "$" << duit << " = " << "Rp " << usdTOrp(duit) << endl;
+      }else{
+        cout << "Mata uang yang anda masukkan tidak valid/tersedia." << endl; 
+        exit(1);
+      }
   }
  return 0;
 }
